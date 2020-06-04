@@ -224,6 +224,7 @@ case ${generic_target} in
     case ${cpu} in
       x86_64*)				arch=x86_64:32 ;;
     esac ;;
+  i386-*-nautilus*)         fmt=elf ;;
   i386-*-netbsdpe*)			fmt=coff em=pe ;;
   i386-*-netbsd*-gnu* | \
   i386-*-knetbsd*-gnu | \

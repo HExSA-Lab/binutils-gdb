@@ -294,6 +294,7 @@ ALL_EMULATION_SOURCES = \
 	eelf_i386_fbsd.c \
 	eelf_i386_ldso.c \
 	eelf_i386_nacl.c \
+	eelf_i386_nautilus.c \
 	eelf_i386_sol2.c \
 	eelf_i386_vxworks.c \
 	eelf_iamcu.c \
@@ -464,6 +465,7 @@ ALL_64_EMULATION_SOURCES = \
 	eelf_x86_64_cloudabi.c \
 	eelf_x86_64_fbsd.c \
 	eelf_x86_64_nacl.c \
+	eelf_x86_64_nautilus.c \
 	eelf_x86_64_sol2.c \
 	ehppa64linux.c \
 	ei386pep.c \
@@ -588,6 +590,14 @@ endif
 	  -DTOOLBINDIR='"$(tooldir)/bin"' \
 	  $(srcdir)/ldfile.c
 endif
+
+eelf_i386_nautilus.c: $(srcdir)/emulparams/elf_i386_nautilus.sh \
+	$(ELF_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
+		${GENSCRIPTS} elf_i386_nautilus "$(tdir_elf_i386_nautilus)"
+
+eelf_x86_64_nautilus.c: $(srcdir)/emulparams/elf_x86_64_nautilus.sh \
+	$(ELF_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
+		${GENSCRIPTS} elf_x86_64_nautilus "$(tdir_elf_x86_64_nautilus)"
 
 eelf32_spu.@OBJEXT@: eelf32_spu.c
 if am__fastdepCC
